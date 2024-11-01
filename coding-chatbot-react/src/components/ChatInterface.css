@@ -1,0 +1,23 @@
+.chatinterface{
+    height: 99.9vh;
+    width: 100%;
+
+    /* border: 2px solid blue; */
+    background-color: #1E2A38;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chatbotName{
+    height: 3rem;
+    width: 72rem;
+    font-size: 1.8rem;
+
+    color: rgb(177, 172, 172);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}

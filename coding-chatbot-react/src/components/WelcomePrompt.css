@@ -1,0 +1,15 @@
+.welcome-prompt{
+    height: 98%;
+    width: 99%;
+
+    background-color: transparent;
+    /* border: 2px solid yellow; */
+    color: whitesmoke;
+    font-size: 2.3rem;
+    font-style: italic;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+}
+
+.layout{
+  display: flex;
+}
+
+.main-section{
+  display: inline-flex;
+  width: 100%;
+  height: 99.5vh;
+}
+
+
