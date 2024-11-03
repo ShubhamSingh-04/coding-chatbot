@@ -29,7 +29,7 @@
 .linkIcon-btn:hover{
     cursor: pointer;
 
-    background-color: rgb(218, 216, 216);
+    background-color: rgb(183, 178, 178);
 }
 
 .inputIcon{
@@ -69,5 +69,5 @@
 
 .sendBtn:hover{
     cursor: pointer;
-    background-color: #f08323;
+    background-color: #cb6a15;
 }

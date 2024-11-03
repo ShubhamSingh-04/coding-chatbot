@@ -1,30 +1,40 @@
-.SideBar{
+.side-bar{
     width: 5%;
     height: 99.9vh;
 
-    display: flex;
-    /* border: 2px solid black; */
     background-color: #1E2A38;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.chatbot-icon-btn{
-    height: 7%;
-    width: 90%;
-    margin: 4rem 0 0 0;
 
+.sidebar-btn{
+    height: 10%;
+    width: 88%;
+    
     background-color: transparent;
     border: none;
     border-radius: 0.5rem;
     outline: none;
 }
 
-.chatbot-icon-btn:hover{
+.sidebar-btn:hover{
     cursor: pointer;
-    border: 0.05rem solid white;
+    border: 0.05rem solid gold;
 }
 
-.chatbot-icon-img{
-    color: yellow;
+.chatbot-icon-btn{
+    margin: 4rem 0 0 0;
+}
+
+.sidebar-btn-img{
     height: 100%;
     width: 100%;
+}
+
+.code-editor-icon-btn{
+    width: 91%;
+    margin: 3rem 0 0 0;
 }
