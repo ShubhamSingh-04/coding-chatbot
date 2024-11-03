@@ -6,8 +6,8 @@ import {
   Route
 } from 'react-router-dom';
 
-import ChatInterface from './components/chatbot-components/chatinterface/ChatInterface';
-import HistorySection from './components/chatbot-components/chatbot-side-panel/HistorySection';
+
+import chatbotComponents from './components/chatbot-components/chatbot-components';
 import SideNavbar from './components/side-navbar/SideNavbar';
 import ChatbotState from './context/chatbotContext/chatbotState';
 
@@ -26,8 +26,8 @@ function App() {
 
               <Route path='/' element={
                 <div className='main-section'>
-                  <HistorySection />
-                  <ChatInterface />
+                  <chatbotComponents.HistorySection />
+                  <chatbotComponents.ChatInterface />
                 </div>
               }
               />
