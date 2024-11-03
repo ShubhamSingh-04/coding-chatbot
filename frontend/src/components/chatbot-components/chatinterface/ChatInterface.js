@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './ChatInterface.css';
-import ChatInput from './ChatInput';
-import Messages from './Messages';
-import WelcomePrompt from './WelcomePrompt';
+import ChatInput from '../chatinput/ChatInput';
+import Messages from '../messages/Messages';
+import WelcomePrompt from '../welcome-prompt/WelcomePrompt';
 
 export default function ChatInterface() {
 

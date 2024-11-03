@@ -6,16 +6,15 @@ import {
   Route
 } from 'react-router-dom';
 
-import ChatInterface from './components/ChatInterface';
-import HistorySection from './components/HistorySection';
-import SideNavbar from './components/SideNavbar';
+import ChatInterface from './components/chatbot-components/chatinterface/ChatInterface';
+import HistorySection from './components/chatbot-components/chatbot-side-panel/HistorySection';
+import SideNavbar from './components/side-navbar/SideNavbar';
 import ChatbotState from './context/chatbotContext/chatbotState';
 
 
 
 function App() {
   return (
-
     <>
       <Router>
 
