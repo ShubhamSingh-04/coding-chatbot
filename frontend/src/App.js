@@ -7,7 +7,10 @@ import {
 } from 'react-router-dom';
 
 
-import chatbotComponents from './components/chatbot-components/chatbot-components';
+import {
+  ChatBotSidePanel,
+  ChatInterface
+} from './components/chatbot-components.js';
 import SideNavbar from './components/side-navbar/SideNavbar';
 import ChatbotState from './context/chatbotContext/chatbotState';
 
@@ -26,8 +29,8 @@ function App() {
 
               <Route path='/' element={
                 <div className='main-section'>
-                  <chatbotComponents.HistorySection />
-                  <chatbotComponents.ChatInterface />
+                  <ChatBotSidePanel />
+                  <ChatInterface />
                 </div>
               }
               />

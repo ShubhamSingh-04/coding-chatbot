@@ -1,7 +1,7 @@
 import React from 'react'
-import './HistorySection.css';
+import './chatbot-side-panel.css';
 
-export default function HistorySection() {
+export default function ChatBotSidePanel() {
   return (
     <div className='history'>
       History Sec

@@ -1,5 +1,5 @@
 .side-bar{
-    width: 5%;
+    min-width: 5%;
     height: 99.9vh;
 
     background-color: #1E2A38;
