@@ -1,6 +1,6 @@
 .messages{
     height: 85%;
-    width: 90%;
+    width: 76%;
     /* border: 2px solid purple; */
 
     margin: 1rem auto 1rem auto;
@@ -8,36 +8,46 @@
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+
+    scroll-behavior: smooth;
 }
 
 .messages::-webkit-scrollbar {
     display: none; /* Chrome, Safari, and Opera */
   }
 
-.messageItem{
+.message-item{
     height: auto;
+
+    font-size: 1.1rem;
+
     padding: 0.6rem;
     border-radius: 1rem;
+    
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    clear: both;
 }
 
 .user{
     width: auto;
     max-width: 60%;
-    display: inline-block;
 
-    background-color: #ffff;  
-    color: rgb(22, 21, 21);
+    background-color: #4B6771;  
+    color: white;
     margin-right: 2rem;  
+
+    align-self: flex-end;
 }
 
 .assistant{
-    width: 94%;
+    max-width: 94%;
     
-    background-color: rgb(219, 182, 113);    
+    background-color: #89AAAA;    
     color: black;
-
-    margin: 1rem auto 1rem auto;
+    
+    align-self: flex-start;
 
     word-wrap: break-word;
 }

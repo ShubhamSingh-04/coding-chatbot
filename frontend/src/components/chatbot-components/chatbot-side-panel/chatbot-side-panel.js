@@ -3,7 +3,7 @@ import './chatbot-side-panel.css';
 
 export default function ChatBotSidePanel() {
   return (
-    <div className='history'>
+    <div className='side-panel'>
       History Sec
     </div>
   )

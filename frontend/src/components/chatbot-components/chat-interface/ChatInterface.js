@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import './ChatInterface.css';
 
 import {
@@ -8,8 +8,6 @@ import {
 } from '../../chatbot-components.js';
 
 export default function ChatInterface() {
-
-
 
   const [messages, setMessages] = useState([
     {
@@ -34,7 +32,7 @@ export default function ChatInterface() {
     },
     {
       "role": "assistant",
-      "content": "React handles state using the `useState` hook in functional components or by defining a `state` object in class components. State in React is an object that determines the behavior and rendering of a component. Whenever state changes, React re-renders the affected components to update the UI."
+      "content": "React handles state using the `useState` hook in functional components or by defining a `state` "
     },
     {
       "role": "user",
@@ -53,15 +51,18 @@ export default function ChatInterface() {
       "content": "Certainly! Here's an example:\n\n```javascript\nimport React, { useState } from 'react';\n\nfunction Counter({ initialCount }) {\n  // useState hook to manage state\n  const [count, setCount] = useState(initialCount);\n\n  return (\n    <div>\n      <h1>Count: {count}</h1>\n      <button onClick={() => setCount(count + 1)}>Increment</button>\n      <button onClick={() => setCount(count - 1)}>Decrement</button>\n    </div>\n  );\n}\n\nexport default Counter;\n```\n\nIn this example:\n- The `initialCount` is passed as a prop to the `Counter` component.\n- The `useState` hook is used to manage the `count` state.\n- Buttons are provided to increment and decrement the count dynamically."
     }
   ]
-  );
-  
+  );  
 
   return (
     <>
         <div className='chatinterface'>
           <div className='chatbotName'>Codley</div>
-          {(messages==[])?<WelcomePrompt/>:<Messages content = {messages}/>}
-          <ChatInput/>
+          
+          { 
+          (messages.length===0)?<WelcomePrompt/>:<Messages messages = {messages}/>
+          }
+          
+          <ChatInput setMessages = {setMessages} messages = {messages}/>
         </div>
     </>
   )

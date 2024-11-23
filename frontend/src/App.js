@@ -11,6 +11,7 @@ import {
   ChatBotSidePanel,
   ChatInterface
 } from './components/chatbot-components.js';
+
 import SideNavbar from './components/side-navbar/SideNavbar';
 import ChatbotState from './context/chatbotContext/chatbotState';
 
