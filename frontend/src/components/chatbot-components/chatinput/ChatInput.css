@@ -11,7 +11,7 @@
     justify-content: space-evenly;
 }
 
-.linkIcon-btn{
+.attachIcon-btn{
     /* border: 2px solid pink; */
     height: 85%;
     width: 6%;
@@ -26,7 +26,7 @@
     align-items: center;
 }
 
-.linkIcon-btn:hover{
+.attachIcon-btn:hover{
     cursor: pointer;
 
     background-color: rgb(183, 178, 178);

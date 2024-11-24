@@ -37,7 +37,7 @@ function App() {
               />
 
               <Route path="/magic-editor" element={
-                <div> Magic Editor</div>
+                <p>Magic Editor</p>
               }
               />
             </Routes>
