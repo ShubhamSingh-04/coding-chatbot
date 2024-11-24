@@ -19,6 +19,8 @@
     border-radius: 0.5rem;
     outline: none;
     box-sizing: border-box;
+
+    user-select: none;
 }
 
 .sidebar-btn:hover{

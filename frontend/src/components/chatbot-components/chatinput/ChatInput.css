@@ -35,6 +35,8 @@
 .inputIcon{
     height: 83%;
     width: 64%;
+
+    user-select: none;
 }
 
 .inputBox{

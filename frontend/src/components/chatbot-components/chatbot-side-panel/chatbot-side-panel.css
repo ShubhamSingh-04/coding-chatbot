@@ -5,3 +5,87 @@
     /* border: 2px solid green; */
     background-color: #2E3B4A;
 }
+
+.side-panel-action-buttons{
+    /* border: 2px solid red; */
+
+    height: 7%;
+    width: 99%;
+
+    display: flex;
+    flex-direction: row;
+
+    border-bottom: 2px solid white;
+}
+
+.history-header-title{
+    width: 82%;
+    
+    color: white;
+    font-weight: bold;
+
+    margin-left: 2.3rem;
+}
+
+.new-chat-button{
+    height: 68%;
+    width: 14%;
+
+    margin: 0.5rem 0.1rem 0 0;
+    
+    /* border: 2px solid white; */
+    background-color: white;
+    border-radius: 50%;
+    color: rgb(5, 5, 99);
+    font-size: 2rem;
+
+    outline: none;
+    border: none;
+
+    box-sizing: border-box;
+    align-self:self-start;
+
+}
+
+.new-chat-button:hover{
+    cursor: pointer;
+    background-color: rgb(190, 183, 176);
+}
+
+.new-chat-button img{
+    width: 100%;
+    height: 100%;
+}
+
+.history-list{
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    color: white;    
+}
+
+.history-list-item{
+    margin: 0.5rem 0 0.5rem 0;
+    padding-left: 0.5rem;
+
+    box-sizing: border-box;
+    user-select: none;
+
+    border-radius: 0.4rem;
+}
+
+.history-list-item:hover{
+    cursor: pointer;
+    color: rgb(167, 163, 163);
+}
+
+.current_conversation{
+    background-color: #1c2a3a;
+    border: 1px solid white;
+}
+
+.current_conversation:hover{
+   color: white;
+}
+
