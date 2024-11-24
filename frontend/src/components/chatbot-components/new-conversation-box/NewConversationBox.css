@@ -1,0 +1,115 @@
+.new-coversation-dialog-box{
+    border: 2px solid white;
+    height: 28%;
+    width: 28%;
+    
+
+    background-color: #2E3B4A;
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: fixed;
+    border-radius: 3rem;
+
+    margin-top: 4rem;
+    margin-right: 41rem;
+    padding: 0 2rem 1rem 2rem;
+
+    overflow: hidden;
+}
+
+.header-container{
+    height: 30%;
+    width: 100%;
+    color: gold;
+
+    padding: 0.3rem;
+
+    border-bottom: 2px solid white;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: larger;
+    font-weight: bold;
+}
+
+.chat-name-input-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    align-items:center;
+
+    font-size: large;
+    font-weight: bold;
+
+    margin: 1rem 0 1rem 0;
+}
+
+.chat-name-input-box{
+    height: 95%;
+    width: 100%;
+
+    margin-top: 1rem;
+
+    padding: 0.5rem;
+    border-radius: 2rem;
+    align-self: center;
+
+    outline: none;
+
+    font-size: 1.2rem;
+}
+
+.action-buttons-container{
+    height: 30%;
+    width: 90%;
+
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action-button{
+    height: 80%;
+    width: 100%;
+
+    border-radius: 2rem;
+    font-size: large;
+
+    outline: none;
+    border: none;
+
+    margin: 1rem;
+
+    user-select: none;
+}
+
+.action-button:hover{
+    cursor: pointer;
+}
+
+.create-btn{
+    background-color: rgb(9, 203, 9);
+}
+
+.create-btn:hover{
+    background-color: rgb(16, 126, 16);
+}
+
+.cancel-btn{
+    color: white;
+    background-color: transparent;
+    border: 0.2rem solid white;
+}
+
+.cancel-btn:hover{
+    color: red;
+    border: 0.2rem solid red;
+}

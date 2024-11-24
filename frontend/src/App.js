@@ -9,19 +9,19 @@ import {
 
 import {
   ChatBotSidePanel,
-  ChatInterface
+  ChatInterface,
+  NewConversationBox
 } from './components/chatbot-components.js';
 
 import SideNavbar from './components/side-navbar/SideNavbar';
 import ChatbotState from './context/chatbotContext/chatbotState';
-import ChatbotContext from './context/chatbotContext/ChatbotContext.js';
 
 
 
 function App() {
   return (
-    <ChatbotContext.Provider>
-      <Router>
+    <Router>
+      <ChatbotState>
 
         <div className='layout'>
           <ChatbotState>
@@ -45,8 +45,8 @@ function App() {
           </ChatbotState>
         </div>
 
-      </Router>
-    </ChatbotContext.Provider>
+      </ChatbotState>
+    </Router>
   );
 }
 

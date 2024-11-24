@@ -5,7 +5,7 @@ import ChatbotContext from '../../../context/chatbotContext/ChatbotContext';
 export default function ChatBotSidePanel() {
 
   const [current_conversation, setCurrentConversation] = useState(0);
-  const {setDisplayAttachment} = useContext(ChatbotContext);
+  const {setDisplayAttachment, displaycreateConversationBox, setDisplayCreateConversationBox} = useContext(ChatbotContext);
 
   const historyList = [
        "React Queries",
@@ -40,6 +40,14 @@ export default function ChatBotSidePanel() {
     setCurrentConversation(index);
   }
 
+  const handleCreateConversation = () =>{
+      if(displaycreateConversationBox)
+         setDisplayCreateConversationBox(0);
+      else setDisplayCreateConversationBox(1);
+
+      setDisplayAttachment(0);
+  }
+
   return (
     <div className='side-panel'>
       <div className="side-panel-action-buttons">
@@ -49,7 +57,7 @@ export default function ChatBotSidePanel() {
           <img className='delete-button-icon' src="/delete.png" alt="" />
         </button>
 
-        <button className='new-chat-button side-bar-action-btn'>
+        <button className='new-chat-button side-bar-action-btn' onClick={handleCreateConversation}>
           +
         </button>
       </div>
