@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './chatbot-side-panel.css';
+import ChatbotContext from '../../../context/chatbotContext/ChatbotContext';
 
 export default function ChatBotSidePanel() {
 
   const [current_conversation, setCurrentConversation] = useState(0);
+  const {setDisplayAttachment} = useContext(ChatbotContext);
 
   const historyList = [
        "React Queries",
@@ -15,10 +17,26 @@ export default function ChatBotSidePanel() {
         "Code Refactoring",
         "Logic Walkthrough",
         "Snippet Optimization",
+        "Feature Implementation",
+        "Syntax Help",
+        "Code Refactoring",
+        "Logic Walkthrough",
+        "Snippet Optimization",
+        "Feature Implementation",
+        "Syntax Help",
+        "Code Refactoring",
+        "Logic Walkthrough",
+        "Snippet Optimization",
+        "Feature Implementation",
+        "Syntax Help",
+        "Code Refactoring",
+        "Logic Walkthrough",
+        "Snippet Optimization",
         "Feature Implementation"
   ];
 
   const handelCurrentConversation = (index)=>{
+    setDisplayAttachment(0);
     setCurrentConversation(index);
   }
 
@@ -27,7 +45,11 @@ export default function ChatBotSidePanel() {
       <div className="side-panel-action-buttons">
         <p className='history-header-title'>Conversation History</p>
 
-        <button className='new-chat-button'>
+        <button className='delete-button side-bar-action-btn'>
+          <img className='delete-button-icon' src="/delete.png" alt="" />
+        </button>
+
+        <button className='new-chat-button side-bar-action-btn'>
           +
         </button>
       </div>

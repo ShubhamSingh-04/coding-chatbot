@@ -1,14 +1,17 @@
 import React from 'react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
 import DOMPurify from "dompurify";
-
 import {Attachment} from "../../chatbot-components";
-
 import './ChatInput.css';
+import ChatbotContext from '../../../context/chatbotContext/ChatbotContext';
+
+
 
 export default function ChatInput({ setMessages }) {
 
+  const {displayAttachment, setDisplayAttachment} = useContext(ChatbotContext);
  const inputBoxRef = useRef(null);
+ const [inputMessage, setInputMessage] = useState("");
 
   const handleInputChange = (event) => {
     setInputMessage(event.target.value);
@@ -41,13 +44,9 @@ export default function ChatInput({ setMessages }) {
   const handelAttachmentDisplay = (e) =>{
     setDisplayAttachment(displayAttachment?0:1);
   }
-
-  const [inputMessage, setInputMessage] = useState("");
-  const [displayAttachment, setDisplayAttachment] = useState(0);
-
   return (
     <div className='inputArea'>
-      {displayAttachment? <Attachment displayAttachment = {displayAttachment} setDisplayAttachment = {setDisplayAttachment}/>: null}
+      {displayAttachment? <Attachment />: null}
 
       <button className='attachIcon-btn' onClick={handelAttachmentDisplay}>
         <img className="linkIcon inputIcon" src={`${process.env.PUBLIC_URL}/attach-file.png`} alt=""/>

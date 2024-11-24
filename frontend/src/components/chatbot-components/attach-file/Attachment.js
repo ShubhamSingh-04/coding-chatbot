@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Attachment.css'
+import ChatbotContext from '../../../context/chatbotContext/ChatbotContext';
 
-export default function Attachment({displayAttachment, setDisplayAttachment}) {
+export default function Attachment() {
+  const {displayAttachment, setDisplayAttachment} = useContext(ChatbotContext);
   const [activeInput, setActiveInput] = useState("file");
   const [gitLink, setGitLink] = useState(null);
   const [file, setFile] = useState(null);
@@ -41,7 +43,7 @@ export default function Attachment({displayAttachment, setDisplayAttachment}) {
             </div>
             :
             <div className='git-hub-input'>
-              <input type="text" placeholder='https//:github.com/user'/>
+              <input type="text" placeholder='https://github.com/username/repository/'/>
             </div>
           }
           <button className='submit-button' onClick={handleSubmit} > {`${activeInput ==="file"? "Upload File":"Fetch Code"}`}</button>

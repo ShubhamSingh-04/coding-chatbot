@@ -66,11 +66,12 @@
 }
 
 .git-hub-input input{
-    height: 80%;
+    height: 113%;
     width: 109%;
 
     outline: none;
     border: none;
+    border-radius: 1.5rem;
 }
 
 

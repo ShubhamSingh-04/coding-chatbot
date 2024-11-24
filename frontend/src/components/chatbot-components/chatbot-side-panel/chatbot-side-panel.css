@@ -24,33 +24,53 @@
     color: white;
     font-weight: bold;
 
-    margin-left: 2.3rem;
+    margin-left: 1rem;
 }
 
-.new-chat-button{
+.side-bar-action-btn{
     height: 68%;
     width: 14%;
 
-    margin: 0.5rem 0.1rem 0 0;
-    
-    /* border: 2px solid white; */
-    background-color: white;
-    border-radius: 50%;
-    color: rgb(5, 5, 99);
-    font-size: 2rem;
+    margin: 0.5rem 0.5rem 0 0;
 
+    
     outline: none;
     border: none;
 
+    border-radius: 50%;
+}
+
+.delete-button{   
+    background-color: rgb(242, 91, 91);
+}
+
+.delete-button:hover{
+    background-color: rgb(192, 76, 76);
+}
+
+.delete-button-icon{
+    height: 100%;
+    width: 100%;
+}
+
+.new-chat-button{
+    /* border: 2px solid white; */
+    background-color: white;
+    color: rgb(5, 5, 99);
+    font-size: 2rem;
+
     box-sizing: border-box;
     align-self:self-start;
+}
 
+.side-bar-action-btn:hover{
+    cursor: pointer;
 }
 
 .new-chat-button:hover{
-    cursor: pointer;
     background-color: rgb(190, 183, 176);
 }
+
 
 .new-chat-button img{
     width: 100%;
@@ -58,11 +78,14 @@
 }
 
 .history-list{
+    /* border: 2px solid red; */
+    height: 92%;
     margin-left: 1rem;
     display: flex;
     flex-direction: column;
 
-    color: white;    
+    color: white; 
+    overflow-y: scroll;  
 }
 
 .history-list-item{
@@ -89,3 +112,13 @@
    color: white;
 }
 
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    height: 12px; /* Height of the horizontal scrollbar */
+  }
+  
+  /* Customize the scrollbar thumb (the draggable part) */
+  ::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the thumb */
+    border-radius: 10px; /* Roundness of the thumb */
+  }

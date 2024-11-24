@@ -1,12 +1,12 @@
+import { useState } from "react";
 import ChatbotContext from "./ChatbotContext";
 
 const ChatbotState = (props)=>{
-    const state = {
-        "name": "Shubham",
-        "class":"5b"
-    }
+    
+    const [displayAttachment, setDisplayAttachment] = useState(0);
+  
     return (
-        <ChatbotContext.Provider value={state}>
+        <ChatbotContext.Provider value={{displayAttachment, setDisplayAttachment}}>
             {props.children}
         </ChatbotContext.Provider>
     )

@@ -14,12 +14,13 @@ import {
 
 import SideNavbar from './components/side-navbar/SideNavbar';
 import ChatbotState from './context/chatbotContext/chatbotState';
+import ChatbotContext from './context/chatbotContext/ChatbotContext.js';
 
 
 
 function App() {
   return (
-    <>
+    <ChatbotContext.Provider>
       <Router>
 
         <div className='layout'>
@@ -45,7 +46,7 @@ function App() {
         </div>
 
       </Router>
-    </>
+    </ChatbotContext.Provider>
   );
 }
 
