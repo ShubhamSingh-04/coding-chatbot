@@ -9,8 +9,7 @@ import {
 
 import {
   ChatBotSidePanel,
-  ChatInterface,
-  NewConversationBox
+  ChatInterface
 } from './components/chatbot-components.js';
 
 import SideNavbar from './components/side-navbar/SideNavbar';
