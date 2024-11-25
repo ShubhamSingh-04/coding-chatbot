@@ -5,12 +5,12 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 5000;
 
-app.use(cors);
+app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', (req, res)=>{
     try{        
-        res.status(200).json({"message":"hello vineet"})
+        res.status(200).json({"message":"hello vineet, i am chatbot"})
     }
     catch{
         res.status(404).json({"error":"Error occoured"});
