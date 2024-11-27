@@ -1,0 +1,21 @@
+.header-container{
+    border: 2px solid red;
+
+    height: 7%;
+    width: 94.1vw;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header-element{
+    margin: 0.3rem;
+    color: black;
+
+    user-select: none;
+}
+
+.byCodley{
+    color: rgb(235, 234, 234);
+    font-size: small;
+}

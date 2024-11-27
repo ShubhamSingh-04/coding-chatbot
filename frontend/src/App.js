@@ -12,6 +12,10 @@ import {
   ChatInterface
 } from './components/chatbot-components.js';
 
+import {
+  EditorHeader
+} from './components/magic-editor-components.js'
+
 import SideNavbar from './components/side-navbar/SideNavbar';
 import ChatbotState from './context/chatbotContext/chatbotState';
 
@@ -29,7 +33,7 @@ function App() {
             <Routes>
 
               <Route path='/' element={
-                <div className='main-section'>
+                <div className='chatbot-main-section'>
                   <ChatBotSidePanel />
                   <ChatInterface />
                 </div>
@@ -37,7 +41,9 @@ function App() {
               />
 
               <Route path="/magic-editor" element={
-                <p>Magic Editor</p>
+                <div className='magic-editor'>
+                    <EditorHeader/>
+                </div>
               }
               />
             </Routes>

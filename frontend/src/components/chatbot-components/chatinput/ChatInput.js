@@ -32,15 +32,6 @@ export default function ChatInput({ setMessages }) {
         });
 };
 
-const displayResponse = (response)=>{
-  setMessages((prevMessages)=>[
-    ...prevMessages,
-    {
-      role: "assistant",
-      content: response
-    }
-  ])
-}
 
 
 const handleSendMessage = async () => {
