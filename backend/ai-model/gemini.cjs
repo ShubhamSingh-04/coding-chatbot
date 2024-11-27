@@ -1,10 +1,20 @@
 const {
-    GoogleGenerativeAI
+    GoogleGenerativeAI,
+    HarmCategory,
+    HarmBlockThreshold,
   } = require("@google/generative-ai");
+
+  require('dotenv').config();
+  console.log("Gen AI Script Running");
   
-  const API_KEY = "AIzaSyAXoULDuMXilqtbmkUJISxolOuqwvc_Oe8";
-  const genAI = new GoogleGenerativeAI(API_KEY);
+
+  const API_key = process.env.API_KEY;
   
+  if(!API_key)
+    console.error("ALERT: API Key Not Found. Please add API_KEY in your .env file");
+  
+  const genAI = new GoogleGenerativeAI(API_key);
+  console.log(genAI)
   const model = genAI.getGenerativeModel({
     model: "gemini-1.5-flash",
     systemInstruction: "You are a fun conversational chatbot for solving coding problems. Relate every query to coding",
@@ -52,7 +62,9 @@ const {
     });
   
     const result = await chatSession.sendMessage(prompt);
-    return (result.response.text());
+    
+    // console.log(result.response.text());
+    return(result.response.text());
   }
 
 

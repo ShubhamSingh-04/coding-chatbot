@@ -21,14 +21,15 @@ export default function ChatInput({ setMessages }) {
     setDisplayAttachment(0);
   }
 
-  const fetchResponse = () => {
-    return axios.get("http://localhost:5000")
+  const fetchResponse = (message) => {
+    const data = {sentMessage : message}
+    return axios.post("http://localhost:5000", data)
         .then((response) => {
             return response.data.message; // Access response.data.message
         })
         .catch((error) => {
             console.log("Error at fetchResponse:", error);
-            return null;
+            return "<div class = 'error-message'>Error Occoured at the backend while generating the response. Try Again</div>";
         });
 };
 
@@ -41,6 +42,9 @@ const handleSendMessage = async () => {
   const formattedMessage = DOMPurify.sanitize(inputMessage.trim().split('\n').join('<br> '));
   if (formattedMessage.length === 0) return;
 
+    // Clear the input field
+    setInputMessage("");
+
   // Add user's message to the conversation
   setMessages((prevMessages) => [
     ...prevMessages,
@@ -48,16 +52,13 @@ const handleSendMessage = async () => {
   ]);
 
   // Fetch the assistant's response
-  const response = await fetchResponse();
+  const response = await fetchResponse(formattedMessage);
 
   // Add assistant's response to the conversation
   setMessages((prevMessages) => [
     ...prevMessages,
     { role: "assistant", content: response },
   ]);
-
-  // Clear the input field
-  setInputMessage("");
 };
 
   const handleKeyDown = (e) => {

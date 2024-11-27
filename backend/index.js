@@ -11,10 +11,11 @@ const mongoURI = "mongodb://localhost:27017/";
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-
+app.post('/', async (req, res) => {
+    const {sentMessage} = req.body;
     try {
-        res.status(200).json({ "message": "hello vineet, i am chatbot" })
+        const response = await run(sentMessage);
+        res.status(200).json({ "message": response })
     }
     catch {
         res.status(404).json({ "error": "Error occoured" });
