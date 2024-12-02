@@ -50,9 +50,37 @@ const ChatbotState = (props)=>{
       );  
 
       const [displaycreateConversationBox, setDisplayCreateConversationBox] = useState(0);
+
+      const [conversations, setConversations] = useState([
+        "React Queries",
+         "Code Review",
+         "Algorithm Discussion",
+         "Error Fixing",
+         "Code Completion",
+         "Syntax Help",
+         "Code Refactoring",
+         "Logic Walkthrough",
+         "Snippet Optimization",
+         "Feature Implementation",
+         "Syntax Help",
+         "Code Refactoring",
+         "Logic Walkthrough",
+         "Snippet Optimization",
+         "Feature Implementation",
+         "Syntax Help",
+         "Code Refactoring",
+         "Logic Walkthrough",
+         "Snippet Optimization",
+         "Feature Implementation",
+         "Syntax Help",
+         "Code Refactoring",
+         "Logic Walkthrough",
+         "Snippet Optimization",
+         "Feature Implementation"
+   ]);
   
     return (
-        <ChatbotContext.Provider value={{displayAttachment, setDisplayAttachment, messages, setMessages, displaycreateConversationBox, setDisplayCreateConversationBox}}>
+        <ChatbotContext.Provider value={{displayAttachment, setDisplayAttachment, messages, setMessages, displaycreateConversationBox, setDisplayCreateConversationBox, conversations, setConversations}}>
             {props.children}
         </ChatbotContext.Provider>
     )

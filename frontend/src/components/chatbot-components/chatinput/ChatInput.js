@@ -23,7 +23,7 @@ export default function ChatInput({ setMessages }) {
 
   const fetchResponse = (message) => {
     const data = {sentMessage : message}
-    return axios.post("http://localhost:5000", data)
+    return axios.post("http://localhost:5000/api/ai/chatbot", data)
         .then((response) => {
             return response.data.message; // Access response.data.message
         })

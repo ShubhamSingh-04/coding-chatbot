@@ -5,35 +5,7 @@ import ChatbotContext from '../../../context/chatbotContext/ChatbotContext';
 export default function ChatBotSidePanel() {
 
   const [current_conversation, setCurrentConversation] = useState(0);
-  const {setDisplayAttachment, displaycreateConversationBox, setDisplayCreateConversationBox} = useContext(ChatbotContext);
-
-  const historyList = [
-       "React Queries",
-        "Code Review",
-        "Algorithm Discussion",
-        "Error Fixing",
-        "Code Completion",
-        "Syntax Help",
-        "Code Refactoring",
-        "Logic Walkthrough",
-        "Snippet Optimization",
-        "Feature Implementation",
-        "Syntax Help",
-        "Code Refactoring",
-        "Logic Walkthrough",
-        "Snippet Optimization",
-        "Feature Implementation",
-        "Syntax Help",
-        "Code Refactoring",
-        "Logic Walkthrough",
-        "Snippet Optimization",
-        "Feature Implementation",
-        "Syntax Help",
-        "Code Refactoring",
-        "Logic Walkthrough",
-        "Snippet Optimization",
-        "Feature Implementation"
-  ];
+  const {setDisplayAttachment, displaycreateConversationBox, setDisplayCreateConversationBox, conversations} = useContext(ChatbotContext);
 
   const handelCurrentConversation = (index)=>{
     setDisplayAttachment(0);
@@ -63,7 +35,7 @@ export default function ChatBotSidePanel() {
       </div>
 
       <div className='history-list'>
-        {historyList.map((ele, index)=>(
+        {conversations.map((ele, index)=>(
           <div key={index} className={`history-list-item ${index === current_conversation? "current_conversation":""}`} onClick={()=> handelCurrentConversation(index)}>
             {ele}
           </div>

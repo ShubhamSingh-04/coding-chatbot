@@ -3,7 +3,7 @@ import './EditorHeader.css'
 
 export default function EditorHeader() {
   return (
-    <div className='header-container'>
+    <div className='editor-header-container'>
         <div className='magic-editor-title header-element'>
             Magic Editor
         </div>

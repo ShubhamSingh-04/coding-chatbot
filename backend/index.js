@@ -4,27 +4,33 @@ const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 const run = require('./ai-model/gemini.cjs');
 
+const chatbotRoute = require('./ai-model/ai-routes/chtabotRoute');
+
+require('dotenv').config();
+
 const app = express();
-const PORT = 5000;
-const mongoURI = "mongodb://localhost:27017/";
 
 app.use(cors());
 app.use(bodyParser.json());
+// app.use(express.json());
 
-app.post('/', async (req, res) => {
-    const {sentMessage} = req.body;
-    try {
-        const response = await run(sentMessage);
-        res.status(200).json({ "message": response })
-    }
-    catch {
-        res.status(404).json({ "error": "Error occoured" });
-    }
-});
+const PORT = process.env.EXPRESS_PORT;
+const mongoURI = process.env.MONGO_URL;
+
+if(!PORT)
+    console.error("EXPRESS_PORT number not found in .env");
+
+if(!mongoURI)
+    console.error("MONGO_URL not found in .env");
+
+
+// chatbot requests
+app.use('/api/ai/chatbot', chatbotRoute);
+
+
 
 app.listen(PORT, async () => {
-    await mongoose
-        .connect(mongoURI)
+    await mongoose.connect(mongoURI)
         .then(() => console.log("MongoDB connected successfully"))
         .catch((err) => console.error("MongoDB connection error:", err));
 

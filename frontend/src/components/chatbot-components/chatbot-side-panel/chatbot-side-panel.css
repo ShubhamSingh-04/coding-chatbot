@@ -14,6 +14,7 @@
 
     display: flex;
     flex-direction: row;
+    align-items: center;
 
     border-bottom: 2px solid white;
 }
@@ -41,11 +42,12 @@
 }
 
 .delete-button{   
+    margin-top: 0.2rem;
     background-color: rgb(242, 91, 91);
 }
 
 .delete-button:hover{
-    background-color: rgb(192, 76, 76);
+    background-color: rgb(155, 55, 55);
 }
 
 .delete-button-icon{

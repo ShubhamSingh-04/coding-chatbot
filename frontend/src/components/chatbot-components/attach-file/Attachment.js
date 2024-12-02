@@ -23,6 +23,7 @@ export default function Attachment() {
 
   const handleSubmit = ()=>{
     setDisplayAttachment(displayAttachment?0:1);
+
   }
 
   return (
@@ -37,6 +38,7 @@ export default function Attachment() {
         </div>
         <div className='attachment-body'>
         
+          <form onSubmit={handleSubmit} className='attachment-form'> 
           {activeInput === "file"?
             <div className='file-input'>
               <input type="file" onChange={handleFileChange}/>
@@ -46,8 +48,8 @@ export default function Attachment() {
               <input type="text" placeholder='https://github.com/username/repository/'/>
             </div>
           }
-          <button className='submit-button' onClick={handleSubmit} > {`${activeInput ==="file"? "Upload File":"Fetch Code"}`}</button>
-
+          <button type='submit' className='submit-button' onClick={handleSubmit} > {`${activeInput ==="file"? "Upload File":"Fetch Code"}`}</button>
+          </form>
         </div>
       </div>
   )
