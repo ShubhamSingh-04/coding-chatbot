@@ -1,12 +1,11 @@
 import React from 'react';
 import { useState, useRef, useContext } from 'react';
 import DOMPurify from "dompurify";
-import { Attachment } from "../../chatbot-components";
 import './ChatInput.css';
+
+import { Attachment } from "../../chatbot-components";
 import ChatbotContext from '../../../context/chatbotContext/ChatbotContext';
-
-import axios from 'axios';
-
+import { fetchResponse } from '../../../services/api/chatbot.api';
 
 
 export default function ChatInput({ setMessages }) {
@@ -20,20 +19,6 @@ export default function ChatInput({ setMessages }) {
     setInputMessage(event.target.value);
     setDisplayAttachment(0);
   }
-
-  const fetchResponse = (message) => {
-    const data = {sentMessage : message}
-    return axios.post("http://localhost:5000/api/ai/chatbot", data)
-        .then((response) => {
-            return response.data.message; // Access response.data.message
-        })
-        .catch((error) => {
-            console.log("Error at fetchResponse:", error);
-            return "<div class = 'error-message'>Error Occoured at the backend while generating the response. Try Again</div>";
-        });
-};
-
-
 
 const handleSendMessage = async () => {
   setDisplayCreateConversationBox(0);

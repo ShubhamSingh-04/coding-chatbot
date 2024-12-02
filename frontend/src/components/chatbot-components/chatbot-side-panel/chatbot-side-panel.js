@@ -3,9 +3,7 @@ import './chatbot-side-panel.css';
 import ChatbotContext from '../../../context/chatbotContext/ChatbotContext';
 
 export default function ChatBotSidePanel() {
-
-  const [current_conversation, setCurrentConversation] = useState(0);
-  const {setDisplayAttachment, displaycreateConversationBox, setDisplayCreateConversationBox, conversations} = useContext(ChatbotContext);
+  const {setDisplayAttachment, displaycreateConversationBox, setDisplayCreateConversationBox, conversations, currentConversation, setCurrentConversation} = useContext(ChatbotContext);
 
   const handelCurrentConversation = (index)=>{
     setDisplayAttachment(0);
@@ -36,7 +34,7 @@ export default function ChatBotSidePanel() {
 
       <div className='history-list'>
         {conversations.map((ele, index)=>(
-          <div key={index} className={`history-list-item ${index === current_conversation? "current_conversation":""}`} onClick={()=> handelCurrentConversation(index)}>
+          <div key={index} className={`history-list-item ${index === currentConversation? "current_conversation":""}`} onClick={()=> handelCurrentConversation(index)}>
             {ele}
           </div>
         ))}

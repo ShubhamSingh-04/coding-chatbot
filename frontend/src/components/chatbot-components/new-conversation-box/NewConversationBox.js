@@ -1,18 +1,29 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useRef} from 'react';
 import './NewConversationBox.css'
-import ChatbotState from '../../../context/chatbotContext/chatbotState';
 import ChatbotContext from '../../../context/chatbotContext/ChatbotContext';
 
 export default function NewConversationBox() {
+    const nameInput = useRef();
 
-    const {setDisplayCreateConversationBox} = useContext(ChatbotContext);
+    const {setDisplayCreateConversationBox, conversations, setConversations, setCurrentConversation} = useContext(ChatbotContext);
 
     const handleCancle = ()=>{
         setDisplayCreateConversationBox(0);
     }
 
-    const handleCreate = ()=>{
+    const handleCreate = async ()=>{
+        const inputText = nameInput.current.value;
+        const capitalizeFirstLetter = inputText.charAt(0).toUpperCase() + inputText.slice(1);
+        setConversations((prevConversations)=>[
+            capitalizeFirstLetter,
+            ...prevConversations
+                
+        ]
+        );
+        
         setDisplayCreateConversationBox(0);
+        setCurrentConversation(0);
+
     }
 
     const handleKeyDown = (e)=>{
@@ -28,7 +39,7 @@ export default function NewConversationBox() {
 
         <div className='chat-name-input-container'>
             Enter the conversation name: 
-            <input className='chat-name-input-box' type="text" placeholder='Eg. Python Doubts' onKeyDown={handleKeyDown} />
+            <input ref={nameInput} className='chat-name-input-box' type="text" placeholder='Eg. Python Doubts' onKeyDown={handleKeyDown}/>
         </div>
 
         <div className="action-buttons-container">

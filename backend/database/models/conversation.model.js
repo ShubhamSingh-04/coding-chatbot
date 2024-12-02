@@ -20,6 +20,11 @@ const conversationSchema = new mongoose.Schema({
                 required:true
             },
 
+            attachmentName:{
+                type:String,
+                required:true
+            },
+
             attachmentID:{
                 type:String,
                 required:true
@@ -42,6 +47,6 @@ const conversationSchema = new mongoose.Schema({
     }
 });
 
-conversationSchema.index({user:1, lastUpdatedAt:1});
+conversationSchema.index({user:1, lastUpdatedAt:-1});
 
 module.exports = mongoose.model("Conversation", conversationSchema);

@@ -78,9 +78,11 @@ const ChatbotState = (props)=>{
          "Snippet Optimization",
          "Feature Implementation"
    ]);
+
+   const [currentConversation, setCurrentConversation] = useState(0);
   
     return (
-        <ChatbotContext.Provider value={{displayAttachment, setDisplayAttachment, messages, setMessages, displaycreateConversationBox, setDisplayCreateConversationBox, conversations, setConversations}}>
+        <ChatbotContext.Provider value={{displayAttachment, setDisplayAttachment, messages, setMessages, displaycreateConversationBox, setDisplayCreateConversationBox, conversations, setConversations, currentConversation, setCurrentConversation}}>
             {props.children}
         </ChatbotContext.Provider>
     )
