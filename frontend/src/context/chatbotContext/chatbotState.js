@@ -80,9 +80,11 @@ const ChatbotState = (props)=>{
    ]);
 
    const [currentConversation, setCurrentConversation] = useState(0);
+
+   const [typing, setTyping] = useState(0);
   
     return (
-        <ChatbotContext.Provider value={{displayAttachment, setDisplayAttachment, messages, setMessages, displaycreateConversationBox, setDisplayCreateConversationBox, conversations, setConversations, currentConversation, setCurrentConversation}}>
+        <ChatbotContext.Provider value={{displayAttachment, setDisplayAttachment, messages, setMessages, displaycreateConversationBox, setDisplayCreateConversationBox, conversations, setConversations, currentConversation, setCurrentConversation, typing, setTyping}}>
             {props.children}
         </ChatbotContext.Provider>
     )

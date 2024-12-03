@@ -10,6 +10,26 @@
     align-items: center;
 }
 
+.typing-gif{
+    width: 5rem;
+    height: 3rem;
+
+    margin: 0 0 1rem 9rem;
+    background-color: transparent;
+    
+    border-radius: 2rem;
+
+    z-index: 11;
+    align-self: flex-start;
+
+    overflow: hidden;
+    object-fit: cover;
+
+    transform: scale(1.2); 
+    transform-origin: center;
+
+}
+
 .chatbotName{
     height: 3rem;
     width: 72rem;

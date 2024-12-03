@@ -2,9 +2,10 @@ const express = require("express");
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
-const run = require('./ai-model/gemini.cjs');
+const run = require('./ai-model/ai-services/gemini.cjs');
 
 const chatbotRoute = require('./ai-model/ai-routes/chtabotRoute');
+const chatbotDbRoute = require('./database/db-routes/chatbotDbRoutes');
 
 require('dotenv').config();
 
@@ -12,7 +13,6 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-// app.use(express.json());
 
 const PORT = process.env.EXPRESS_PORT;
 const mongoURI = process.env.MONGO_URL;
@@ -27,6 +27,8 @@ if(!mongoURI)
 // chatbot requests
 app.use('/api/ai/chatbot', chatbotRoute);
 
+// chatbot Database requests
+app.use('/api/db/chatbot', chatbotDbRoute)
 
 
 app.listen(PORT, async () => {

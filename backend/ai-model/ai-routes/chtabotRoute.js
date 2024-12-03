@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const run = require('../gemini.cjs');
+const run = require('../ai-services/gemini.cjs');
 
 router.post('/', async (req, res)=>{
     const {sentMessage} = req.body;

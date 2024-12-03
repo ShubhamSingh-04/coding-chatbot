@@ -10,7 +10,7 @@ import { fetchResponse } from '../../../services/api/chatbot.api';
 
 export default function ChatInput({ setMessages }) {
 
-  const { displayAttachment, setDisplayAttachment, setDisplayCreateConversationBox } = useContext(ChatbotContext);
+  const { displayAttachment, setDisplayAttachment, setDisplayCreateConversationBox, typing, setTyping } = useContext(ChatbotContext);
   const inputBoxRef = useRef(null);
   const [inputMessage, setInputMessage] = useState("");
 
@@ -26,17 +26,15 @@ const handleSendMessage = async () => {
 
   const formattedMessage = DOMPurify.sanitize(inputMessage.trim().split('\n').join('<br> '));
   if (formattedMessage.length === 0) return;
-
-    // Clear the input field
     setInputMessage("");
 
-  // Add user's message to the conversation
   setMessages((prevMessages) => [
     ...prevMessages,
     { role: "user", content: formattedMessage },
   ]);
 
-  // Fetch the assistant's response
+  setTyping(1);
+
   const response = await fetchResponse(formattedMessage);
 
   // Add assistant's response to the conversation
@@ -44,6 +42,8 @@ const handleSendMessage = async () => {
     ...prevMessages,
     { role: "assistant", content: response },
   ]);
+
+  setTyping(0);
 };
 
   const handleKeyDown = (e) => {
