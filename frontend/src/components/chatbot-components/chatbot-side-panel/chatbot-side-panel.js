@@ -1,9 +1,20 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './chatbot-side-panel.css';
 import ChatbotContext from '../../../context/chatbotContext/ChatbotContext';
 
+import { getConversationsForUser } from '../../../services/api/chatbot.api';
+
 export default function ChatBotSidePanel() {
-  const {setDisplayAttachment, displaycreateConversationBox, setDisplayCreateConversationBox, conversations, currentConversation, setCurrentConversation} = useContext(ChatbotContext);
+  const {userID, setDisplayAttachment, displaycreateConversationBox, setDisplayCreateConversationBox, conversationsInfo, setConversationsInfo, currentConversation, setCurrentConversation} = useContext(ChatbotContext);
+
+  useEffect(()=>{
+    const fetchConversations = async () => {
+      const fetchedConversationInfo = await getConversationsForUser(userID);
+      setConversationsInfo(fetchedConversationInfo);
+  };
+
+  fetchConversations();
+  }, []);
 
   const handelCurrentConversation = (index)=>{
     setDisplayAttachment(0);
@@ -33,12 +44,18 @@ export default function ChatBotSidePanel() {
       </div>
 
       <div className='history-list'>
-        {conversations.map((ele, index)=>(
-          <div key={index} className={`history-list-item ${index === currentConversation? "current_conversation":""}`} onClick={()=> handelCurrentConversation(index)}>
-            {ele}
-          </div>
-        ))}
+  {conversationsInfo.length !== 0 && 
+    conversationsInfo.map((ele, index) => (
+      <div 
+        key={index} 
+        className={`history-list-item ${index === currentConversation ? "current_conversation" : ""}`} 
+        onClick={() => handelCurrentConversation(index)}
+      >
+        {ele.conversationName}
       </div>
+    ))
+  }
+</div>
     </div>
   )
 }

@@ -97,12 +97,16 @@
     box-sizing: border-box;
     user-select: none;
 
+    border: 1px solid transparent;
     border-radius: 0.4rem;
+
+    overflow-y: hidden;
 }
 
 .history-list-item:hover{
     cursor: pointer;
-    color: rgb(167, 163, 163);
+    color: rgb(205, 195, 195);
+    border: 1px solid white;
 }
 
 .current_conversation{

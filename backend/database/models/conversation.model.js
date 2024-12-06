@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const conversationSchema = new mongoose.Schema({
 
-    user:{
-        type: mongoose.Schema.Types.ObjectId,
+    userID:{
+        type:String,
         required: true
     },
 
@@ -47,6 +47,6 @@ const conversationSchema = new mongoose.Schema({
     }
 });
 
-conversationSchema.index({user:1, lastUpdatedAt:-1});
+conversationSchema.index({userID:1, lastUpdatedAt:-1});
 
 module.exports = mongoose.model("Conversation", conversationSchema);

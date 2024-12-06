@@ -2,6 +2,12 @@ import { useState } from "react";
 import ChatbotContext from "./ChatbotContext";
 
 const ChatbotState = (props)=>{
+
+    const [userName, setUserName] = useState("User");
+
+    const [userID, setUserID] = useState("675069150239fa9971f2a360");
+
+    const [conversationsInfo, setConversationsInfo] = useState([]);
     
     const [displayAttachment, setDisplayAttachment] = useState(0);
 
@@ -65,18 +71,7 @@ const ChatbotState = (props)=>{
          "Syntax Help",
          "Code Refactoring",
          "Logic Walkthrough",
-         "Snippet Optimization",
-         "Feature Implementation",
-         "Syntax Help",
-         "Code Refactoring",
-         "Logic Walkthrough",
-         "Snippet Optimization",
-         "Feature Implementation",
-         "Syntax Help",
-         "Code Refactoring",
-         "Logic Walkthrough",
-         "Snippet Optimization",
-         "Feature Implementation"
+         "Snippet Optimization"
    ]);
 
    const [currentConversation, setCurrentConversation] = useState(0);
@@ -84,7 +79,7 @@ const ChatbotState = (props)=>{
    const [typing, setTyping] = useState(0);
   
     return (
-        <ChatbotContext.Provider value={{displayAttachment, setDisplayAttachment, messages, setMessages, displaycreateConversationBox, setDisplayCreateConversationBox, conversations, setConversations, currentConversation, setCurrentConversation, typing, setTyping}}>
+        <ChatbotContext.Provider value={{userID, setUserID, conversationsInfo, setConversationsInfo, displayAttachment, setDisplayAttachment, messages, setMessages, displaycreateConversationBox, setDisplayCreateConversationBox, conversations, setConversations, currentConversation, setCurrentConversation, typing, setTyping}}>
             {props.children}
         </ChatbotContext.Provider>
     )

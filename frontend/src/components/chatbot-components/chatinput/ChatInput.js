@@ -37,7 +37,6 @@ const handleSendMessage = async () => {
 
   const response = await fetchResponse(formattedMessage);
 
-  // Add assistant's response to the conversation
   setMessages((prevMessages) => [
     ...prevMessages,
     { role: "assistant", content: response },

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
+
 const messagesSchema = new mongoose.Schema({
-    sender:{
+    role:{
         type: String,
         enum:['bot', 'user'],
         required: true
@@ -14,8 +15,9 @@ const messagesSchema = new mongoose.Schema({
     },
 
     conversationID:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref: Conversation,
+        // type:mongoose.Schema.Types.ObjectId,
+        // ref: 'Conversation',
+        type:String,
         required: true,
     },
 

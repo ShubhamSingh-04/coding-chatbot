@@ -2,10 +2,12 @@ import React, { useContext, useState, useRef} from 'react';
 import './NewConversationBox.css'
 import ChatbotContext from '../../../context/chatbotContext/ChatbotContext';
 
+import {createConversation} from '../../../services/api/chatbot.api'
+
 export default function NewConversationBox() {
     const nameInput = useRef();
 
-    const {setDisplayCreateConversationBox, conversations, setConversations, setCurrentConversation} = useContext(ChatbotContext);
+    const {userID, setDisplayCreateConversationBox, conversationsInfo, setConversationsInfo, setCurrentConversation} = useContext(ChatbotContext);
 
     const handleCancle = ()=>{
         setDisplayCreateConversationBox(0);
@@ -13,17 +15,18 @@ export default function NewConversationBox() {
 
     const handleCreate = async ()=>{
         const inputText = nameInput.current.value;
-        const capitalizeFirstLetter = inputText.charAt(0).toUpperCase() + inputText.slice(1);
-        setConversations((prevConversations)=>[
-            capitalizeFirstLetter,
-            ...prevConversations
-                
+        const capitalizeFirstLetter =  inputText.charAt(0).toUpperCase() + inputText.slice(1);
+
+        const newConversationInfo = await createConversation(userID, capitalizeFirstLetter);
+
+        setConversationsInfo((prevConversationsInfo)=>[
+            newConversationInfo,
+            ...prevConversationsInfo                
         ]
         );
         
         setDisplayCreateConversationBox(0);
         setCurrentConversation(0);
-
     }
 
     const handleKeyDown = (e)=>{
