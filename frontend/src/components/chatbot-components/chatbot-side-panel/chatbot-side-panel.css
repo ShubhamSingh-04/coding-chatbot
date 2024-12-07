@@ -26,6 +26,8 @@
     font-weight: bold;
 
     margin-left: 1rem;
+
+    user-select: none;
 }
 
 .side-bar-action-btn{
@@ -34,6 +36,7 @@
 
     margin: 0.5rem 0.5rem 0 0;
 
+    user-select: none;
     
     outline: none;
     border: none;

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef} from 'react';
+import React, { useContext, useRef} from 'react';
 import './NewConversationBox.css'
 import ChatbotContext from '../../../context/chatbotContext/ChatbotContext';
 
@@ -7,23 +7,24 @@ import {createConversation} from '../../../services/api/chatbot.api'
 export default function NewConversationBox() {
     const nameInput = useRef();
 
-    const {userID, setDisplayCreateConversationBox, conversationsInfo, setConversationsInfo, setCurrentConversation} = useContext(ChatbotContext);
+    const {userID, setDisplayCreateConversationBox, setConversationsInfo, setCurrentConversation} = useContext(ChatbotContext);
 
     const handleCancle = ()=>{
         setDisplayCreateConversationBox(0);
     }
 
     const handleCreate = async ()=>{
-        const inputText = nameInput.current.value;
-        const capitalizeFirstLetter =  inputText.charAt(0).toUpperCase() + inputText.slice(1);
+        if( nameInput.current.value!==''){
+            const capitalizeFirstLetter =  nameInput.current.value.charAt(0).toUpperCase() + nameInput.current.value.slice(1);
 
-        const newConversationInfo = await createConversation(userID, capitalizeFirstLetter);
+            const newConversationInfo = await createConversation(userID, capitalizeFirstLetter);
 
-        setConversationsInfo((prevConversationsInfo)=>[
-            newConversationInfo,
-            ...prevConversationsInfo                
-        ]
-        );
+            setConversationsInfo((prevConversationsInfo)=>[
+                newConversationInfo,
+                ...prevConversationsInfo                
+            ]
+            );
+    }
         
         setDisplayCreateConversationBox(0);
         setCurrentConversation(0);

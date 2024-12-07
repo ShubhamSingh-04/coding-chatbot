@@ -1,11 +1,11 @@
 const express = require("express");
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const mongoose = require("mongoose");
-const run = require('./ai-model/ai-services/gemini.cjs');
 
-const chatbotRoute = require('./ai-model/ai-routes/chtabotRoute');
-const chatbotDbRoute = require('./database/db-routes/chatbotDbRoutes');
+const mongoose = require("mongoose");
+
+const chatbotRoute = require('./ai-model/ai-routes/chatbot.route');
+const chatbotDbRoute = require('./database/db-routes/chatbot.db.route');
 
 require('dotenv').config();
 

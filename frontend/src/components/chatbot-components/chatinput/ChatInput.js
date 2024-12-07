@@ -10,7 +10,7 @@ import { fetchResponse } from '../../../services/api/chatbot.api';
 
 export default function ChatInput({ setMessages }) {
 
-  const { displayAttachment, setDisplayAttachment, setDisplayCreateConversationBox, typing, setTyping } = useContext(ChatbotContext);
+  const { conversationsInfo, currentConversation, displayAttachment, setDisplayAttachment, setDisplayCreateConversationBox, typing, setTyping, setDisplayDeleteConversationBox } = useContext(ChatbotContext);
   const inputBoxRef = useRef(null);
   const [inputMessage, setInputMessage] = useState("");
 
@@ -18,24 +18,28 @@ export default function ChatInput({ setMessages }) {
     setDisplayCreateConversationBox(0);
     setInputMessage(event.target.value);
     setDisplayAttachment(0);
+    setDisplayDeleteConversationBox(0);
   }
 
 const handleSendMessage = async () => {
+  setDisplayDeleteConversationBox(0);
   setDisplayCreateConversationBox(0);
   setDisplayAttachment(0);
 
+  
   const formattedMessage = DOMPurify.sanitize(inputMessage.trim().split('\n').join('<br> '));
   if (formattedMessage.length === 0) return;
-    setInputMessage("");
-
+  setInputMessage("");
+  
   setMessages((prevMessages) => [
     ...prevMessages,
     { role: "user", content: formattedMessage },
   ]);
-
+  
   setTyping(1);
-
-  const response = await fetchResponse(formattedMessage);
+  
+  const currentConversationID = conversationsInfo[currentConversation]._id;
+  const response = await fetchResponse(currentConversationID, formattedMessage);
 
   setMessages((prevMessages) => [
     ...prevMessages,
@@ -54,6 +58,9 @@ const handleSendMessage = async () => {
 
   const handelAttachmentDisplay = (e) => {
     setDisplayAttachment(displayAttachment ? 0 : 1);
+
+    setDisplayCreateConversationBox(0);
+    setDisplayDeleteConversationBox(0);
   }
   return (
     <div className='inputArea'>

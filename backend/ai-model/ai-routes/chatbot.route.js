@@ -6,13 +6,13 @@ const saveMessage = require('../../database/db-services/saveMessage')
 const run = require('../ai-services/gemini.cjs');
 
 router.post('/', async (req, res)=>{
-    const {sentMessage} = req.body;
-    saveMessage('user', 'conid', sentMessage);
+    const {conversationID, sentMessage} = req.body;
+    saveMessage('user', conversationID, sentMessage);
     
     try{
         const response  = await run(sentMessage);
         res.status(200).json({"message": response});
-        saveMessage('bot', 'conid', response);
+        saveMessage('bot', conversationID, response);
     } catch(error){
         console.error("Error at .get chatbotRoute:", error);
     }

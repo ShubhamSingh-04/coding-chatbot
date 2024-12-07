@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
+
 const Conversation = require('../models/conversation.model');
 
 const createConversation = async (userID, conversationName)=>{
+    const userID_ObjID = new mongoose.Types.ObjectId(userID);
     const newConversation = new Conversation({
-        userID,
-        conversationName
+        userID:userID_ObjID,
+        conversationName:conversationName
     });
 
     const newConversationObj = await newConversation.save();
@@ -12,18 +14,22 @@ const createConversation = async (userID, conversationName)=>{
     return newConversationObj;
 }
 
-const deleteConversation = ()=>{
-
+const deleteConversation = async(userID, conversationID)=>{
+    const userID_ObjID = new mongoose.Types.ObjectId(userID);
+    try{
+        await Conversation.findOneAndDelete({userID:userID_ObjID, _id:conversationID});
+    } catch(error){
+        console.error("Error at deleteConversation():", error);
+    }
 }
 
 const getConversation = async(userID)=>{
     try{
-        // console.log("getconvo USerID: ", userID);
+        const userID_ObjID = new mongoose.Types.ObjectId(userID);
 
-        const conversationsInfo = await Conversation.find({userID:userID})
+        const conversationsInfo = await Conversation.find({userID:userID_ObjID})
         .sort({lastUpdatedAt:-1});
 
-        // console.log("getConvo bk Conversation", conversationsInfo);
         return conversationsInfo;
     }
     catch(error){

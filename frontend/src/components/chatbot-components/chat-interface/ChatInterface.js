@@ -1,25 +1,28 @@
-import React, { useContext, useState} from 'react';
+import React, { useContext} from 'react';
 import './ChatInterface.css';
 
 import {
   ChatInput,
   WelcomePrompt,
   Messages,
-  NewConversationBox
+  NewConversationBox,
+  DeleteConversationBox
 } from '../../chatbot-components.js';
 
 import ChatbotContext from '../../../context/chatbotContext/ChatbotContext.js';
 
 export default function ChatInterface() {
 
-  const {messages, setMessages, displaycreateConversationBox, typing} = useContext(ChatbotContext);
+  const {messages, setMessages, displaycreateConversationBox, typing, displayDeleteConversationBox} = useContext(ChatbotContext);
 
   return (
     <>
         <div className='chatinterface'>
           <div className='chatbotName'>Codley</div>
 
-          { displaycreateConversationBox ? <NewConversationBox/> : null}     
+          { displaycreateConversationBox ? <NewConversationBox/> : null} 
+          { displayDeleteConversationBox ? <DeleteConversationBox/> : null} 
+              
                
           { 
           (messages.length===0)?<WelcomePrompt/>:<Messages messages = {messages}/>

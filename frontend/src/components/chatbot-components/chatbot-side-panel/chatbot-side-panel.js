@@ -5,28 +5,46 @@ import ChatbotContext from '../../../context/chatbotContext/ChatbotContext';
 import { getConversationsForUser } from '../../../services/api/chatbot.api';
 
 export default function ChatBotSidePanel() {
-  const {userID, setDisplayAttachment, displaycreateConversationBox, setDisplayCreateConversationBox, conversationsInfo, setConversationsInfo, currentConversation, setCurrentConversation} = useContext(ChatbotContext);
+  const {userID, setDisplayAttachment, displaycreateConversationBox, setDisplayCreateConversationBox, conversationsInfo, setConversationsInfo, currentConversation, setCurrentConversation, setDisplayDeleteConversationBox,displayDeleteConversationBox} = useContext(ChatbotContext);
 
   useEffect(()=>{
     const fetchConversations = async () => {
       const fetchedConversationInfo = await getConversationsForUser(userID);
-      setConversationsInfo(fetchedConversationInfo);
+      fetchedConversationInfo ?
+        setConversationsInfo(fetchedConversationInfo)
+        :
+        setConversationsInfo([]);
   };
 
   fetchConversations();
-  }, []);
+  });
 
   const handelCurrentConversation = (index)=>{
     setDisplayAttachment(0);
+    setDisplayCreateConversationBox(0);
+    setDisplayDeleteConversationBox(0);
     setCurrentConversation(index);
   }
 
-  const handleCreateConversation = () =>{
-      if(displaycreateConversationBox)
-         setDisplayCreateConversationBox(0);
-      else setDisplayCreateConversationBox(1);
+  const handleCreateConversationBtn = () =>{
+     displaycreateConversationBox ? 
+      setDisplayCreateConversationBox(0)
+      :
+      setDisplayCreateConversationBox(1);
 
       setDisplayAttachment(0);
+      setDisplayDeleteConversationBox(0);
+
+  }
+
+  const handleDeleteConversationBtn = () => {
+    displayDeleteConversationBox ?
+      setDisplayDeleteConversationBox(0)
+      :
+      setDisplayDeleteConversationBox(1);
+
+      setDisplayAttachment(0);
+      setDisplayCreateConversationBox(0);
   }
 
   return (
@@ -34,11 +52,11 @@ export default function ChatBotSidePanel() {
       <div className="side-panel-action-buttons">
         <p className='history-header-title'>Conversation History</p>
 
-        <button className='delete-button side-bar-action-btn'>
-          <img className='delete-button-icon' src="/delete.png" alt="" />
+        <button className='delete-button side-bar-action-btn' onClick={handleDeleteConversationBtn}>
+          <img className='delete-button-icon' src="/delete.png" alt=""  />
         </button>
 
-        <button className='new-chat-button side-bar-action-btn' onClick={handleCreateConversation}>
+        <button className='new-chat-button side-bar-action-btn' onClick={handleCreateConversationBtn}>
           +
         </button>
       </div>
@@ -51,7 +69,7 @@ export default function ChatBotSidePanel() {
         className={`history-list-item ${index === currentConversation ? "current_conversation" : ""}`} 
         onClick={() => handelCurrentConversation(index)}
       >
-        {ele.conversationName}
+        {ele.conversationName?ele.conversationName:""}
       </div>
     ))
   }

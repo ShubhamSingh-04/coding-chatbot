@@ -1,9 +1,11 @@
+const mongoose  = require('mongoose');
 const Message = require('../models/messages.model');
 
 const saveMessage = async(role, conversationID, content)=>{
+    const conversationID_ObjID = new mongoose.Types.ObjectId(conversationID)
     const newMessage = new Message({
-        role,
-        conversationID,
+        role:role,
+        conversationID:conversationID_ObjID,
         content
     });
 

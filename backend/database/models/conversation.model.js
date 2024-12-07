@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const conversationSchema = new mongoose.Schema({
 
     userID:{
-        type:String,
+        type:mongoose.Types.ObjectId,
         required: true
     },
 
