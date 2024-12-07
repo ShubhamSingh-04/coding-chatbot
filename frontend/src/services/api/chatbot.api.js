@@ -64,4 +64,17 @@ const deleteConversationAndUpdate = async(userID, conversationID)=>{
 
 }
 
-export {fetchResponse, createConversation, getConversationsForUser, deleteConversationAndUpdate};
+const fetchMessages = async(userID, conversationID)=>{
+    const params = {userID, conversationID};
+
+    return axios.get('http://localhost:5000/api/db/chatbot/fetchMessages', {params})
+    .then((response)=>{
+        return response.data.messages;
+    })
+    .catch((error)=>{
+        console.error("Error at fetchMessages() chatbot.api.js:", error);
+        return [];
+    })
+}
+
+export {fetchMessages, fetchResponse, createConversation, getConversationsForUser, deleteConversationAndUpdate};

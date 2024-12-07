@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const saveMessage = require('../../database/db-services/saveMessage')
+const {saveMessage} = require('../../database/db-services/message.service')
 
 const run = require('../ai-services/gemini.cjs');
 
