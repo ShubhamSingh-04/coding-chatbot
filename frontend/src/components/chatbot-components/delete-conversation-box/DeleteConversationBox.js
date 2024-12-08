@@ -5,7 +5,7 @@ import ChatbotContext from '../../../context/chatbotContext/ChatbotContext';
 import { deleteConversationAndUpdate } from '../../../services/api/chatbot.api';
 
 export default function DeleteConversationBox() {
-    const {userID, currentConversationID, setDisplayCreateConversationBox, conversationsInfo, currentConversation, setConversationsInfo, setCurrentConversation, setDisplayDeleteConversationBox, setMessages} = useContext(ChatbotContext);
+    const {userID, currentConversationID, setCurrentConversationID, setDisplayCreateConversationBox, conversationsInfo, currentConversation, setConversationsInfo, setCurrentConversation, setDisplayDeleteConversationBox, setMessages} = useContext(ChatbotContext);
 
     const handleCancle = ()=>{
         setDisplayDeleteConversationBox(0);
@@ -13,12 +13,14 @@ export default function DeleteConversationBox() {
 
     const handleDelete = async ()=>{
         setDisplayCreateConversationBox(0);
-        setCurrentConversation(0);
+        setCurrentConversation(null);
+        setMessages([]);
+        setCurrentConversationID(null);
+
         
         setDisplayDeleteConversationBox(0);
         const updatedConversationsInfo = await deleteConversationAndUpdate(userID, currentConversationID);
 
-        setMessages([]);
 
         updatedConversationsInfo?
             setConversationsInfo(updatedConversationsInfo)

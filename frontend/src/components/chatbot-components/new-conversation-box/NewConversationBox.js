@@ -7,7 +7,7 @@ import {createConversation} from '../../../services/api/chatbot.api'
 export default function NewConversationBox() {
     const nameInput = useRef();
 
-    const {userID, setDisplayCreateConversationBox, setConversationsInfo, setCurrentConversationID, setCurrentConversation} = useContext(ChatbotContext);
+    const {userID, setMessages, setDisplayCreateConversationBox, setConversationsInfo, setCurrentConversationID, setCurrentConversation} = useContext(ChatbotContext);
 
     const handleCancle = ()=>{
         setDisplayCreateConversationBox(0);
@@ -26,6 +26,7 @@ export default function NewConversationBox() {
             );
 
             setCurrentConversationID(newConversationInfo._id);
+            setMessages([]);
             setCurrentConversation(0);
     }
         
