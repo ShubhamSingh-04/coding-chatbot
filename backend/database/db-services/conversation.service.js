@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const Conversation = require('../models/conversation.model');
 
+const {deleteMessagesWithConversationID} = require('./message.service');
+
 const createConversation = async (userID, conversationName)=>{
     const userID_ObjID = new mongoose.Types.ObjectId(userID);
     const newConversation = new Conversation({
@@ -18,6 +20,7 @@ const deleteConversation = async(userID, conversationID)=>{
     const userID_ObjID = new mongoose.Types.ObjectId(userID);
     try{
         await Conversation.findOneAndDelete({userID:userID_ObjID, _id:conversationID});
+        await deleteMessagesWithConversationID(conversationID);
     } catch(error){
         console.error("Error at deleteConversation():", error);
     }

@@ -13,8 +13,7 @@ router.post('/createConversation', async (req, res)=>{
 router.post('/deleteConversationAndUpdate', async(req, res)=>{
     const {userID, conversationID} = req.body;
     try{
-        const deletedConversation = await deleteConversation(userID, conversationID);
-        console.log("Deleted Conversation:", deletedConversation);
+        await deleteConversation(userID, conversationID);
     } catch(error){
         console.error("Error at /deleteConversationAndUpdate:", error);
     }

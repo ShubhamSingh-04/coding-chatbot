@@ -28,4 +28,14 @@ const fetchMessages = async (conversationID) => {
     }
 }
 
-module.exports = {fetchMessages, saveMessage};
+const deleteMessagesWithConversationID = async(conversationID)=>{
+    const conversationID_ObjID = new mongoose.Types.ObjectId(conversationID);
+
+    try{
+        await Message.deleteMany({conversationID:conversationID_ObjID});
+    } catch(error){
+        console.error("Error at deleteMessagesWithConversationID() message.service.js:", error);
+    }
+}
+
+module.exports = {fetchMessages, saveMessage, deleteMessagesWithConversationID};
