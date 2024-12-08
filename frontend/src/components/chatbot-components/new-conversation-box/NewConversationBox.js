@@ -7,14 +7,14 @@ import {createConversation} from '../../../services/api/chatbot.api'
 export default function NewConversationBox() {
     const nameInput = useRef();
 
-    const {userID, setDisplayCreateConversationBox, setConversationsInfo, setCurrentConversation} = useContext(ChatbotContext);
+    const {userID, setDisplayCreateConversationBox, setConversationsInfo, setCurrentConversationID, setCurrentConversation} = useContext(ChatbotContext);
 
     const handleCancle = ()=>{
         setDisplayCreateConversationBox(0);
     }
 
     const handleCreate = async ()=>{
-        if( nameInput.current.value!==''){
+        if( nameInput.current.value!=='' ){
             const capitalizeFirstLetter =  nameInput.current.value.charAt(0).toUpperCase() + nameInput.current.value.slice(1);
 
             const newConversationInfo = await createConversation(userID, capitalizeFirstLetter);
@@ -24,10 +24,12 @@ export default function NewConversationBox() {
                 ...prevConversationsInfo                
             ]
             );
+
+            setCurrentConversationID(newConversationInfo._id);
+            setCurrentConversation(0);
     }
         
         setDisplayCreateConversationBox(0);
-        setCurrentConversation(0);
     }
 
     const handleKeyDown = (e)=>{

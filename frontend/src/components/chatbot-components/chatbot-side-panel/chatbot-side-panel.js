@@ -5,7 +5,7 @@ import ChatbotContext from '../../../context/chatbotContext/ChatbotContext';
 import { fetchMessages, getConversationsForUser } from '../../../services/api/chatbot.api';
 
 export default function ChatBotSidePanel() {
-  const {setCurrentConversationID, userID, setDisplayAttachment, displaycreateConversationBox, setDisplayCreateConversationBox, conversationsInfo, setConversationsInfo, currentConversation, setCurrentConversation, setDisplayDeleteConversationBox, displayDeleteConversationBox, Messages, setMessages } = useContext(ChatbotContext);
+  const {currentConversationID, setCurrentConversationID, userID, setDisplayAttachment, displaycreateConversationBox, setDisplayCreateConversationBox, conversationsInfo, setConversationsInfo, currentConversation, setDisplayDeleteConversationBox, displayDeleteConversationBox, Messages, setMessages, setCurrentConversation } = useContext(ChatbotContext);
 
   useEffect(() => {
     const fetchConversations = async () => {
@@ -23,8 +23,8 @@ export default function ChatBotSidePanel() {
     setDisplayAttachment(0);
     setDisplayCreateConversationBox(0);
     setDisplayDeleteConversationBox(0);
-    setCurrentConversation(index);
 
+    setCurrentConversation(index);
     setCurrentConversationID(conversationID);
 
     const messages = await fetchMessages(userID, conversationID);
@@ -43,10 +43,12 @@ export default function ChatBotSidePanel() {
   }
 
   const handleDeleteConversationBtn = () => {
-    displayDeleteConversationBox ?
-      setDisplayDeleteConversationBox(0)
-      :
-      setDisplayDeleteConversationBox(1);
+    if((conversationsInfo.length !== 0) && (currentConversation !== null)){
+      displayDeleteConversationBox ?
+        setDisplayDeleteConversationBox(0)
+        :
+        setDisplayDeleteConversationBox(1);
+    }
 
     setDisplayAttachment(0);
     setDisplayCreateConversationBox(0);
@@ -71,7 +73,7 @@ export default function ChatBotSidePanel() {
           conversationsInfo.map((ele, index) => (
             <div
               key={index}
-              className={`history-list-item ${index === currentConversation ? "current_conversation" : ""}`}
+              className={`history-list-item ${ele._id === currentConversationID ? "current_conversation" : ""}`}
               onClick={() => handelCurrentConversation(index, ele._id)}
             >
               {ele.conversationName ? ele.conversationName : ""}

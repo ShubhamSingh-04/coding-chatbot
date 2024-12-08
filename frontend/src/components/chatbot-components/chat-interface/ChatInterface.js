@@ -13,7 +13,7 @@ import ChatbotContext from '../../../context/chatbotContext/ChatbotContext.js';
 
 export default function ChatInterface() {
 
-  const {messages, setMessages, displaycreateConversationBox, typing, displayDeleteConversationBox, conversationsInfo, currentConversation} = useContext(ChatbotContext);
+  const {messages, setMessages, displaycreateConversationBox, typing, displayDeleteConversationBox, conversationsInfo, currentConversationID} = useContext(ChatbotContext);
 
   return (
     <>
@@ -32,7 +32,7 @@ export default function ChatInterface() {
             (typing)? <img src="typing.gif" alt="" className='typing-gif'/> : null
           }
 
-          {(null)? 
+          {(currentConversationID === null || conversationsInfo.length === 0)? 
             null:
             <ChatInput setMessages = {setMessages} messages = {messages}/> 
           }
