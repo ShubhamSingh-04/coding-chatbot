@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const messagesSchema = new mongoose.Schema({
     role:{
         type: String,
-        enum:['bot', 'user'],
+        enum:['bot', 'user', 'attachment'],
         required: true
     },
 
@@ -20,8 +20,27 @@ const messagesSchema = new mongoose.Schema({
     },
 
     content:{
-        type: String,
-        required: true
+        type: String
+    },
+
+    attachment:{
+        type:{
+            attachmentType: {
+                type:String,
+                enum:['github', 'file'],
+                required:true
+            },
+
+            attachmentName:{
+                type:String,
+                required:true
+            },
+
+            attachmentInfo:{
+                type:[mongoose.Schema.Types.Mixed],
+                required:true
+            }
+        }
     }
 });
 

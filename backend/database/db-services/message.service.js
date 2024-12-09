@@ -10,8 +10,10 @@ const saveMessage = async (role, conversationID, content) => {
         content
     });
 
-    await newMessage.save();
+    const saved_message = await newMessage.save();
     await setLastUpdatedAtToNow(conversationID);
+
+    return saved_message;
 }
 
 const fetchMessages = async (conversationID) => {

@@ -72,6 +72,17 @@ p{
     word-wrap: break-word;
 }
 
+.attachment{
+    width: auto;
+    max-width: 60%;
+
+    background-color: #3db3dd;  
+    color: white;
+    margin-right: 2rem;  
+
+    align-self: flex-end;
+}
+
 .html-tag-div{
     font-family: Arial, sans-serif; 
     margin:0; 

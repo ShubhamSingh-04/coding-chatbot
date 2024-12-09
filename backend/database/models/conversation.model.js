@@ -12,28 +12,6 @@ const conversationSchema = new mongoose.Schema({
         required:true,
     },
 
-    attachment:{
-        type:{
-            attachmentType: {
-                type:String,
-                enum:['github', 'file'],
-                required:true
-            },
-
-            attachmentName:{
-                type:String,
-                required:true
-            },
-
-            attachmentID:{
-                type:String,
-                required:true
-            }
-        },
-
-        default:null
-    },
-
     createdAt:{
         type:Date,
         default: Date.now,

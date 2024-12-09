@@ -46,7 +46,7 @@ export default function Messages({messages}) {
   return (
     <div className="messages">
     {messages.map((message, index) => (
-      <div key={index} className={`message-item ${message.role === 'bot'?"assistant":"user"}`} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize('<pre class = "message-item-pre">'+ message.content +'</pre>') }}>
+      <div key={index} className={`message-item ${message.role === 'bot'?"assistant":(message.role==="user")?"user":"attachment"}`} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize('<pre class = "message-item-pre">'+ message.content +'</pre>') }}>
       </div>
     ))}
     
