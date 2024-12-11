@@ -6,7 +6,7 @@ const {
   console.log("Gen AI Script Running");
   
 
-  const API_key = process.env.API_KEY;
+  const API_key = process.env.GEMINI_API_KEY;
   const {conversation_history} = require('./conversation-history.cjs')
   
   if(!API_key)
