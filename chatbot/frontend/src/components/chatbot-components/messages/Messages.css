@@ -1,0 +1,99 @@
+.messages{
+    height: 85%;
+    width: 76%;
+    /* border: 2px solid purple; */
+
+    margin: 1rem auto 1rem auto;
+
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+
+    scroll-behavior: smooth;
+}
+
+.message-item {
+
+    padding: 0 0.1rem 0 0.1rem;
+    border-radius: 1rem;
+    
+    font-size: 1.1rem;
+
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    clear: both;
+    width: auto;
+    max-width: 94%; /* Ensure content doesn't exceed parent width */
+
+    word-wrap: break-word;
+    word-break: break-word; /* Optional, for better browser support */
+    overflow-wrap: break-word; /* Ensures proper handling of long text */
+    box-sizing: border-box; /* Ensures padding doesn't exceed width */
+}
+
+.message-item-pre {
+    height: auto;
+    width: auto;
+
+    font-family: Arial, Helvetica, sans-serif;
+    word-wrap: break-word;
+    word-break: break-word; /* Handles breaking long words */
+    overflow-wrap: break-word; /* Best for unbreakable strings like URLs */
+    white-space: pre-wrap; /* Maintains formatting and wraps long words */
+
+    padding: 0 1.1rem 0 1.1rem;
+}
+
+p{
+    margin: 0;
+    padding: 0 0.1rem 0 0.1rem;
+}
+
+.user{
+    width: auto;
+    max-width: 60%;
+
+    background-color: #4B6771;  
+    color: white;
+    margin-right: 2rem;  
+
+    align-self: flex-end;
+}
+
+.assistant{
+    max-width: 94%;
+    
+    background-color: #89AAAA;    
+    color: black;
+    
+    align-self: flex-start;
+
+    word-wrap: break-word;
+}
+
+.attachment{
+    max-width: 94%;
+    
+    background-color: #ffffff;    
+    color: black;
+    
+    align-self: flex-start;
+
+    word-wrap: break-word;
+}
+
+.html-tag-div{
+    font-family: Arial, sans-serif; 
+    margin:0; 
+    padding:0;
+    height:auto;
+    padding: 0;
+}
+
+.error-message{
+    color: red;
+    font-weight: bolder;
+    font-size: large;
+}
+

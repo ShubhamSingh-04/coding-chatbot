@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor by Codley</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="title-container">
+        <h1 class="title">Code Editor from Codley</h1>
+    </div>
+
+    <div class="header">
+        <select id="language">
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+            <option value="c">C</option>
+            <option value="java">Java</option>
+        </select> 
+        <button id="run">Run Code</button>
+    </div>
+
+    
+    <div class="input-output">
+        <p class="input">
+            Input
+        </p>
+        <p class="output">
+            Output
+        </p>
+    </div>
+
+    <div id="container">
+        <textarea id="editor" placeholder="enter your code here"></textarea>
+        <div id="output"></div>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/codemirror/lib/codemirror.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror/mode/clike/clike.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror/mode/python/python.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror/mode/javascript/javascript.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
