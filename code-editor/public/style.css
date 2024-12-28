@@ -60,12 +60,12 @@ body {
 
 #output {
     white-space: pre-wrap;
-    background-color: #2a3847;
+    background-color: #d8d2d2;;
     padding: 10px;
     overflow-y: auto;
 
     width: 500px;
-    color: white;
+    /* color: white; */
 }
 #language {
     margin-left: 20px;
@@ -100,8 +100,9 @@ h1{
     width: 50%;
     height: 513px;
 
-    background-color: #2E3B4A;
-    color: white;
+    background-color: #d8d2d2;
+    /* color: white; */
+    border-right: 2px solid black;
 }
 
 .title-container{

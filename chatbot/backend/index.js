@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 
 const chatbotRoute = require('./ai-model/ai-routes/chatbot.route');
 const chatbotDbRoute = require('./database/db-routes/chatbot.db.route');
+const authRoute = require('./database/db-routes/auth.db.route');
 
 require('dotenv').config();
 
@@ -28,7 +29,10 @@ if(!mongoURI)
 app.use('/api/ai/chatbot', chatbotRoute);
 
 // chatbot Database requests
-app.use('/api/db/chatbot', chatbotDbRoute)
+app.use('/api/db/chatbot', chatbotDbRoute);
+
+// auth requests
+app.use('/api/auth', authRoute);
 
 
 app.listen(PORT, async () => {

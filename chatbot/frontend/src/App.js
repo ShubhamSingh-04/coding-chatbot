@@ -33,7 +33,9 @@ function App() {
 
         <div className='layout'>
           <ChatbotState>
-            { !loginPage &&
+            { loginPage?
+              null
+              :
               <SideNavbar />}
 
             <Routes>
@@ -41,13 +43,11 @@ function App() {
               <Route path='/' element={
                 <>
                   {
-                    loginPage &&
+                    loginPage ?
                     <div className='login'>
                       <LoginPage loginPage = {loginPage} setLoginPage = {setLoginPage}/>
                     </div>
-                  }
-                  {
-                    !loginPage &&
+                    :
                     <div className='chatbot-main-section'>
                       <ChatBotSidePanel />
                       <ChatInterface />
