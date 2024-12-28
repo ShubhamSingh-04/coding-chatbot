@@ -24,7 +24,7 @@ const ChatbotState = (props) => {
   const [currentConversationID, setCurrentConversationID] = useState(null);
 
   return (
-    <ChatbotContext.Provider value={{ userID, setUserID, conversationsInfo, setConversationsInfo, displayAttachment, setDisplayAttachment, messages, setMessages, displaycreateConversationBox, setDisplayCreateConversationBox, currentConversation, setCurrentConversation, typing, setTyping, displayDeleteConversationBox, setDisplayDeleteConversationBox, currentConversationID, setCurrentConversationID }}>
+    <ChatbotContext.Provider value={{userName, setUserName, userID, setUserID, conversationsInfo, setConversationsInfo, displayAttachment, setDisplayAttachment, messages, setMessages, displaycreateConversationBox, setDisplayCreateConversationBox, currentConversation, setCurrentConversation, typing, setTyping, displayDeleteConversationBox, setDisplayDeleteConversationBox, currentConversationID, setCurrentConversationID }}>
       {props.children}
     </ChatbotContext.Provider>
   )

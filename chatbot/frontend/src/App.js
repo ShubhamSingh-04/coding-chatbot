@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from 'react';
 
 import {
   BrowserRouter as Router,
@@ -18,25 +19,41 @@ import {
 
 import SideNavbar from './components/side-navbar/SideNavbar';
 import ChatbotState from './context/chatbotContext/chatbotState';
+import LoginPage from './components/login-page/LoginPage.js';
 
 
 
 function App() {
+
+  const [loginPage, setLoginPage] = useState(true);
+
   return (
     <Router>
       <ChatbotState>
 
         <div className='layout'>
           <ChatbotState>
-            <SideNavbar />
+            { !loginPage &&
+              <SideNavbar />}
 
             <Routes>
 
               <Route path='/' element={
-                <div className='chatbot-main-section'>
-                  <ChatBotSidePanel />
-                  <ChatInterface />
-                </div>
+                <>
+                  {
+                    loginPage &&
+                    <div className='login'>
+                      <LoginPage loginPage = {loginPage} setLoginPage = {setLoginPage}/>
+                    </div>
+                  }
+                  {
+                    !loginPage &&
+                    <div className='chatbot-main-section'>
+                      <ChatBotSidePanel />
+                      <ChatInterface />
+                    </div>
+                  }
+                </>
               }
               />
 

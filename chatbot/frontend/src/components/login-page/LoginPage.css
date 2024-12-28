@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+    user-select: none;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-image: url(Sp.jpg); */
+    background-color: rgba(29,39,55,255);
+    background-size: cover;
+    background-position: center;
+}
+
+.login-layout{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.codley-title{
+    color: white;
+    font-size: 83px;
+    font-weight: bolder;
+}
+
+.ask-codley-gif{
+    width: 570px;
+    height: 85px;
+}
+
+.login-form {
+    background: #1E2A38;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    padding: 60px;
+    border-radius: 20px;
+    backdrop-filter: blur(25px);
+    text-align: center;
+    color: white;
+    width: 500px;
+    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.15);
+
+    margin-left: 110px;
+}
+
+.login-title {
+    font-size: 60px;
+    margin-bottom: 40px;
+}
+
+.input-box {
+    margin: 15px 0;
+    position: relative;
+}
+.input-box input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 12px 12px 12px 45px;
+    border-radius: 99px;
+    outline: 3px solid transparent;
+    transition: 0.3s;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+}
+.input-box input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 20px;
+    font-weight: 500;
+}
+.input-box input:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.3);
+}
+.input-box input::-ms-reveal {
+    filter: invert(100%);
+}
+
+.input-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.register-btn{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    margin-left: 10px;
+}
+
+.register-btn:hover{
+    color:rgb(87, 87, 231);
+    text-decoration: none;
+    cursor: pointer;
+
+}
+
+.login-btn {
+    width: 100%;
+    padding: 10px 0;
+    background: #2F9CF4;
+    border: none;
+    border-radius: 99px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: 0.1s;
+}
+
+.loginError {
+    color: red;
+    text-align: left;
+    margin: 0 0 10px 10px;
+}
+
+.login-btn:hover {
+    background: #026fc9;
+}
+
+.register {
+    margin-top: 15px;
+    font-size: 15px;
+}
+.register a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+.register a:hover {
+    text-decoration: underline;
+}
