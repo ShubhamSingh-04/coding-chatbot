@@ -92,7 +92,7 @@ p{
 }
 
 .error-message{
-    color: red;
+    color: rgb(165, 11, 11);
     font-weight: bolder;
     font-size: large;
 }

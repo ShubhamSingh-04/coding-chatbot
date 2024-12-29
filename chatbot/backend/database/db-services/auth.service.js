@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user.model');
 
 const register = async (userName, email, password) => {
+    console.log("UserName at top of auth.service.js:", userName);
     try {
         // Check if username or email already exists
         const existingUser = await User.findOne({ $or: [{ userName }, { email }] });
@@ -11,13 +12,18 @@ const register = async (userName, email, password) => {
             return { status: 400, error: `${errorField}_EXISTS`, message: `${errorField.toLowerCase()} is already in use` };
         }
 
+        if(!userName || !email || !password) {
+            return { status: 400, error: 'INVALID_INPUT', message: 'Username, email, and password are required' };
+        }
+
         // Hash the password
         const salt = await bcrypt.genSalt(10);
         const passwordHash = await bcrypt.hash(password, salt);
 
+        data = { userName, email, passwordHash };
         // Create a new user
         const newUser = new User({
-            userName,
+            userName: userName,
             email,
             passwordHash
         });
@@ -29,7 +35,7 @@ const register = async (userName, email, password) => {
         return { status: 201, userID: savedUser._id.toString(), message: 'User registered successfully' };
         
     } catch (error) {
-        console.error('Error during registration at auth.db.js:', error);
+        console.error('Error during registration at auth.service.js:', error);
         return { status: 500, message: 'Server error' };
     }
 }
@@ -38,9 +44,11 @@ const login = async (userName, password) => {
     try {
         // Find the user
         const user = await User.findOne({ userName });
+        
         if (!user) {
             return { status: 400, error: 'USER_DOES_NOT_EXIST', message: 'Invalid credentials' };
         }
+
 
         // Compare the provided password with the stored hashed password
         const isMatch = await bcrypt.compare(password, user.passwordHash);

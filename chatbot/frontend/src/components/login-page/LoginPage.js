@@ -68,6 +68,7 @@ export default function LoginPage({ loginPage, setLoginPage }) {
             if (registeredUser.status === 201) {
                 setUserName(userNameRef.current.value);
                 setUserID(registeredUser.userID);
+                setSuccessMessage(true);
             }
 
             else if (registeredUser.error === 'USERNAME_EXISTS') {
@@ -78,15 +79,13 @@ export default function LoginPage({ loginPage, setLoginPage }) {
                 setErrors({ ...errors, emailExistsError: true });
             }
 
-            setSuccessMessage(true);
-
         } catch (error) {
             console.error('Error during registration at auth.db.js:', error);
         }
 
     }
 
-    const handleLogin = async(e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
         if (userNameRef.current.value === '' || passwordRef.current.value === '') {
@@ -97,87 +96,83 @@ export default function LoginPage({ loginPage, setLoginPage }) {
         const userName = userNameRef.current.value;
         const password = passwordRef.current.value;
 
-        try {
-            const loggedInUser = await login(userName, password);
+        const loggedInUser = await login(userName, password);
 
-            if (loggedInUser.status === 200) {
-                setUserName(userName);
-                setUserID(loggedInUser.userID);
-                setLoginPage(false);
-            } else {
-                setErrors({ ...errors, incorrectCredentials: true });
-            }
-        } catch (error) {
-            console.error('Error during login at auth.db.js:', error);
+        if (loggedInUser.status === 200) {
+            setUserName(userName);
+            setUserID(loggedInUser.userID);
+            setLoginPage(false);
+        } else {
+            setErrors({ ...errors, incorrectCredentials: true });
         }
     }
 
     return (
         <div className="login-body">
 
-        <div className='login-layout'>
-            <div className="side-logo">
-                <p className='codley-title'>Codley</p>
-                <img className='ask-codley-gif' src={`${process.env.PUBLIC_URL}/ask-codley.gif`} alt="none" />
-            </div>
-
-
-            <div className="login-form">
-                <h1 className="login-title">
-                    {
-                        newUser ? 'Register' : 'Login'
-                    }
-                </h1>
-
-                <div className="input-box">
-                    <i className='bx bxs-user'></i>
-                    <input type="text" placeholder="Username" ref={userNameRef} onChange={() => setErrors({})} />
+            <div className='login-layout'>
+                <div className="side-logo">
+                    <p className='codley-title'>Codley</p>
+                    <img className='ask-codley-gif' src={`${process.env.PUBLIC_URL}/ask-codley.gif`} alt="none" />
                 </div>
-                {errors.userNameNotFound && <p className="userNameError loginError">User not found</p>}
-                {errors.userNameAlreadyExists && <p className="userNameError loginError">Username already exists</p>}
-                {errors.invalidUserName && <p className="userNameError loginError">Username cannot contain spaces</p>}
 
-                {
-                    newUser &&
-                    <div className="input-box">
-                        <i className='bx bxs-envelope'></i>
-                        <input type="email" placeholder="email" ref={emailRef} onChange={() => setErrors({})} />
-                    </div>
-                }{errors.emailExistsError && <p className="emailError loginError">Email already exists</p>}
-                {errors.emailFormatError && <p className="emailError loginError">Invalid Email</p>}
 
-                <div className="input-box">
-                    <i className='bx bxs-lock-alt'></i>
-                    <input type="password" placeholder="Password" ref={passwordRef} onChange={() => setErrors({})} />
-                </div>
-                {errors.passwordLengthError && <p className="passwordError loginError">Password must be at least 6 characters long</p>}
-                {errors.incorrectCredentials && <p className="passwordError loginError">Incorrect credentials</p>}
-                {errors.requiredCredentialsError && <p className="passwordError loginError">Please fill in all fields</p>}
-
-                <button className="login-btn" onClick={!newUser ? handleLogin : handleRegister}>
-                    {
-                        newUser ? 'Register' : 'Login'
-                    }
-                </button>
-
-                <p className="register">
-                    {
-                        newUser ? 'Already have an account?' : "Don't have an account?"
-                    }
-                    <button onClick={() => { setNewUser(!newUser); setErrors({}); setSuccessMessage(false) }} className='register-btn'>
+                <div className="login-form">
+                    <h1 className="login-title">
                         {
-                            newUser ? 'Login' : 'Register'
+                            newUser ? 'Register' : 'Login'
+                        }
+                    </h1>
+
+                    <div className="input-box">
+                        <i className='bx bxs-user'></i>
+                        <input type="text" placeholder="Username" ref={userNameRef} onChange={() => setErrors({})} />
+                    </div>
+                    {errors.userNameNotFound && <p className="userNameError loginError">User not found</p>}
+                    {errors.userNameAlreadyExists && <p className="userNameError loginError">Username already exists</p>}
+                    {errors.invalidUserName && <p className="userNameError loginError">Username cannot contain spaces</p>}
+
+                    {
+                        newUser &&
+                        <div className="input-box">
+                            <i className='bx bxs-envelope'></i>
+                            <input type="email" placeholder="email" ref={emailRef} onChange={() => setErrors({})} />
+                        </div>
+                    }{errors.emailExistsError && <p className="emailError loginError">Email already exists</p>}
+                    {errors.emailFormatError && <p className="emailError loginError">Invalid Email</p>}
+
+                    <div className="input-box">
+                        <i className='bx bxs-lock-alt'></i>
+                        <input type="password" placeholder="Password" ref={passwordRef} onChange={() => setErrors({})} />
+                    </div>
+                    {errors.passwordLengthError && <p className="passwordError loginError">Password must be at least 6 characters long</p>}
+                    {errors.incorrectCredentials && <p className="passwordError loginError">Incorrect credentials</p>}
+                    {errors.requiredCredentialsError && <p className="passwordError loginError">Please fill in all fields</p>}
+
+                    <button className="login-btn" onClick={!newUser ? handleLogin : handleRegister}>
+                        {
+                            newUser ? 'Register' : 'Login'
                         }
                     </button>
-                </p>
 
-                {
-                    successMessage && <p className="successMessage">
-                        User Registered Successfully. Please login to continue
+                    <p className="register">
+                        {
+                            newUser ? 'Already have an account?' : "Don't have an account?"
+                        }
+                        <button onClick={() => { setNewUser(!newUser); setErrors({}); setSuccessMessage(false) }} className='register-btn'>
+                            {
+                                newUser ? 'Login' : 'Register'
+                            }
+                        </button>
                     </p>
-                }
+
+                    {
+                        successMessage && <p className="successMessage">
+                            User Registered Successfully. Please login to continue
+                        </p>
+                    }
+                </div>
             </div>
-        </div>
         </div>
     )
 }

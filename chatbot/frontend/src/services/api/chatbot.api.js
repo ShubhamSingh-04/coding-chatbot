@@ -2,27 +2,33 @@ import axios from 'axios';
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 
-const checkOnline = () => {
-    return navigator.onLine; // Return true or false based on online status
-}
+const checkOnline = async () => {
+    try {
+        await fetch("https://www.google.com/", { mode: "no-cors" });
+        return true; // Online if fetch succeeds
+    } catch (error) {
+        console.error("Online check failed:", error);
+        return false; // Offline if fetch fails
+    }
+};
 
 const fetchResponse = async (conversationID, sentMessage) => {
-    const online = checkOnline();
+    try {
+        const online = await checkOnline();
+        console.log("Online status:", online);
 
-    if (!online) {
-        return "<div class='error-message'>Error Occurred! Check your internet connection & try again</div>";
-    }
-    else{
-        const data = {conversationID, sentMessage}
+        if (!online) {
+            return "<div class='error-message'>Error Occurred! Check your internet connection & try again</div>";
+        }
 
-        return axios.post(`${baseURL}/api/ai/chatbot`, data)
-        .then((response) => {
-            return response.data.message;
-        })
-        .catch((error) => {
-            console.error(error);
-            return "<div class = 'error-message'>Error Occoured at the backend while generating the response.-</div>";
-        });
+        const data = { conversationID, sentMessage };
+
+        // Sending POST request using axios
+        const response = await axios.post(`${baseURL}/api/ai/chatbot`, data);
+        return response.data.message; // Return the backend-generated response
+    } catch (error) {
+        console.error("Error in fetchResponse:", error);
+        return "<div class='error-message'>Error occurred at the backend while generating the response.</div>";
     }
 };
 
