@@ -1,6 +1,6 @@
 # Coding Chatbot  
 
-A powerful and user-friendly chatbot designed to simplify the coding experience. Built using the Gemini 1.5 flash model, this chatbot assists developers with debugging, code completion, and understanding complex coding concepts. Whether you're a beginner or an experienced programmer, this tool is here to make coding more accessible and efficient.  
+A powerful and user-friendly chatbot designed to simplify the coding experience. Built using MERN stack & powered by the Gemini 1.5 flash model, this chatbot assists developers with debugging, code completion, and understanding complex coding concepts. Whether you're a beginner or an experienced programmer, this tool is here to make coding more accessible and efficient.  
 
 ## Chatbot UI
 
